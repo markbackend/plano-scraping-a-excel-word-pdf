@@ -1,0 +1,10 @@
+{
+  "estado": "listo",
+  "pruebas": "90 pasan, 0 fallan",
+  "resumen": "Scraper configurable por YAML (lista, campos, paginación siguiente/número, detalle) con robots.txt, demora, reintentos, caché, limpieza de precios/fechas y deduplicación. Exporta a CSV, Excel con formato, Word, PDF y JSON. Demo local en 1 minuto con 'python -m scraper demo'; pruebas sin internet con servidor local y httpx.MockTransport.",
+  "pendiente": [
+    "El modo Playwright (javascript: true) no se probó con un navegador real: solo está probado el mensaje de error cuando no está instalado. Probarlo en el primer trabajo que lo necesite.",
+    "sitios/ejemplo.yaml se verificó una vez a mano contra books.toscrape.com (3 registros con detalle, OK); no forma parte de las pruebas automáticas porque necesita internet.",
+    "Lo normal es que el cliente pida extras (mail, Google Sheets, histórico en base de datos): no están incluidos, se cotizan aparte."
+  ]
+}

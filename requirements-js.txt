@@ -1,0 +1,4 @@
+# OPCIONAL: solo para sitios que arman el contenido con JavaScript (javascript: true en el YAML).
+#   .venv/Scripts/python.exe -m pip install -r requirements-js.txt
+#   .venv/Scripts/python.exe -m playwright install chromium
+playwright==1.49.1

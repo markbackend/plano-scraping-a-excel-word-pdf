@@ -1,0 +1,11 @@
+# Python 3.12. Instalar con: .venv/Scripts/python.exe -m pip install -r requirements.txt
+httpx==0.28.1
+beautifulsoup4==4.15.0
+PyYAML==6.0.3
+openpyxl==3.1.5
+python-docx==1.2.0
+reportlab==5.1.0
+python-dotenv==1.2.4
+
+# pruebas
+pytest==9.2.0

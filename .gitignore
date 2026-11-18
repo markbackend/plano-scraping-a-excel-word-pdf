@@ -1,0 +1,29 @@
+# entorno y secretos
+.env
+.venv/
+venv/
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# datos y salidas
+.cache/
+salidas/
+*.sqlite
+*.sqlite3
+*.db
+*.xlsx
+*.docx
+*.pdf
+*.csv
+!tests/**/*.csv
+
+# sistema / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+~$*

@@ -1,0 +1,58 @@
+# Sitio de demostración LOCAL (tests/sitio_demo). Lo usa "python -m scraper demo", que levanta
+# un servidor en un puerto libre y reemplaza el host de url_inicial automáticamente.
+# Para correrlo a mano: python -m http.server 8765 --directory tests/sitio_demo
+# y en otra consola:   python -m scraper correr sitios/demo.yaml --formato excel,pdf
+
+nombre: Ferretería Demo
+url_inicial: http://127.0.0.1:8765/productos/pagina-1.html
+decimal: ","                     # los precios vienen como $ 1.234,56
+
+lista:
+  selector: div.producto          # cada producto del listado
+
+campos:
+  titulo:
+    selector: h2.titulo
+    requerido: true               # sin título, el producto se descarta
+  sku:
+    atributo: data-sku            # sin selector = atributo del propio div.producto
+  precio:
+    selector: .precio
+    tipo: precio                  # "Consultar" queda vacío
+  categoria: span.categoria       # forma corta: solo el selector
+  publicado:
+    selector: time.fecha
+    tipo: fecha
+    formato_fecha: "%d/%m/%Y"
+  enlace:
+    selector: a.ver
+    atributo: href
+    tipo: url                     # se convierte a URL absoluta
+
+paginacion:
+  tipo: siguiente
+  selector: a.siguiente
+  max_paginas: 10
+
+detalle:
+  enlace: enlace                  # campo de la lista con la URL de la ficha
+  campos:
+    marca: dd.marca
+    stock:
+      selector: .stock
+      tipo: entero                # "Stock: 1.250 unidades" -> 1250
+    garantia_meses:
+      selector: dd.garantia
+      regex: '(\d+)\s*meses'
+      tipo: entero
+    descripcion: p.descripcion
+
+deduplicar_por: [enlace]
+
+opciones:
+  demora_segundos: 0.1            # sitio local: se puede ir rápido. En sitios reales, 1 o más.
+  cache_horas: 0
+
+salida:
+  nombre_archivo: ferreteria_demo
+  titulo_informe: Relevamiento de precios - Ferretería Demo

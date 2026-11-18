@@ -1,0 +1,20 @@
+{
+  "nombre": "Scraper configurable por YAML a Excel, Word, PDF y CSV",
+  "sirve_para": [
+    "Extraer datos de una web a Excel",
+    "Automatizar la extracción de información a informes Word o PDF",
+    "Scraping de comercios y tiendas online (precio, stock, SKU, categoría)",
+    "Listados con paginación y ficha de detalle por elemento",
+    "Pasar un catálogo web a CSV para importarlo en otro sistema",
+    "Relevamientos periódicos programados (Programador de tareas o cron)"
+  ],
+  "palabras_clave_workana": [
+    "web scraping", "scraping", "extraer datos", "extracción de datos", "excel", "csv", "pdf", "word",
+    "python", "beautifulsoup", "crawler", "automatizar", "precios", "catálogo", "ecommerce",
+    "data mining", "playwright", "selenium", "reporte", "base de datos de productos"
+  ],
+  "lenguaje": "Python 3.12 (httpx, BeautifulSoup, PyYAML, openpyxl, python-docx, reportlab; Playwright opcional)",
+  "pruebas": "90 pasan, 0 fallan",
+  "horas_adaptar": "2-6",
+  "precio_sugerido_usd": "80-250"
+}

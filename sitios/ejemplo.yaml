@@ -1,0 +1,55 @@
+# Ejemplo contra un sitio PÚBLICO hecho para practicar scraping: https://books.toscrape.com
+# (catálogo ficticio de libros; su propósito explícito es que se lo scrapee).
+#   python -m scraper muestra sitios/ejemplo.yaml
+#   python -m scraper correr sitios/ejemplo.yaml --formato excel,pdf
+# Copiá este archivo como plantilla para cada cliente: sitios/<cliente>.yaml
+
+nombre: Books to Scrape
+url_inicial: https://books.toscrape.com/catalogue/page-1.html
+decimal: "."                      # precios en formato inglés: £51.77
+
+lista:
+  selector: article.product_pod
+
+campos:
+  titulo:
+    selector: h3 a
+    atributo: title               # el texto visible viene cortado; el atributo title tiene el nombre completo
+    requerido: true
+  precio:
+    selector: p.price_color
+    tipo: precio
+  disponibilidad: p.instock.availability
+  calificacion:
+    selector: p.star-rating
+    atributo: class               # "star-rating Three"
+    regex: 'star-rating\s+(\w+)'
+  enlace:
+    selector: h3 a
+    atributo: href
+    tipo: url
+
+paginacion:
+  tipo: siguiente
+  selector: li.next a
+  max_paginas: 2                  # el sitio tiene 50 páginas; subir cuando haga falta
+
+detalle:
+  enlace: enlace
+  campos:
+    upc: table.table tr:nth-of-type(1) td
+    stock:
+      selector: p.instock.availability
+      regex: '(\d+)\s+available'
+      tipo: entero
+    descripcion: '#product_description + p'
+
+deduplicar_por: [enlace]
+
+opciones:
+  demora_segundos: 1.0
+  cache_horas: 24
+
+salida:
+  nombre_archivo: libros
+  titulo_informe: Catálogo de libros

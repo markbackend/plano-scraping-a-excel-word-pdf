@@ -1,0 +1,32 @@
+# Ejemplo de paginación POR NÚMERO (pagina-1.html, pagina-2.html, ...) sobre el sitio demo local.
+# Se detiene sola cuando una página da 404 o no tiene elementos.
+
+nombre: Noticias Demo
+url_inicial: http://127.0.0.1:8765/noticias/pagina-1.html
+
+lista:
+  selector: article.nota
+
+campos:
+  titulo:
+    selector: h3
+    requerido: true
+  fecha:
+    selector: span.fecha
+    tipo: fecha                   # "3 de marzo de 2025" se interpreta solo
+  autor: span.autor
+  resumen: p.resumen
+
+paginacion:
+  tipo: numero
+  plantilla: "pagina-{n}.html"    # relativa a url_inicial; también sirve "?page={n}"
+  desde: 1
+  # hasta: 20                     # opcional; si no está, sigue hasta 404 / página vacía / max_paginas
+
+opciones:
+  demora_segundos: 0.1
+  cache_horas: 0
+
+salida:
+  nombre_archivo: noticias_demo
+  titulo_informe: Noticias publicadas

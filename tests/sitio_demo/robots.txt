@@ -1,0 +1,6 @@
+# robots.txt del sitio de demostración
+User-agent: *
+Disallow: /privado/
+
+User-agent: MalBot
+Disallow: /
